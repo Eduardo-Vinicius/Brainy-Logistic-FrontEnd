@@ -446,12 +446,11 @@ export default function Teste() {
                          value={valorTotal}
                          onChange={e => setValorTotal(parseFloat(e.target.value))} />
                     </Form.Group>
+                <button> Adicionar </button>
                 <Button className="btnAdicionar" variant="success" onClick={MyFunction} as={Col} xs={2} Style ="margin: 0px" size="small">
                     Adicionar
                 </Button>
-                <Button className="btnAdicionar" variant="success" onClick={MyFunction} as={Col} xs={2} Style ="margin: 0px" size="small">
-                    Adicionar
-                </Button>
+                
                 <h2> FILAH DA PUTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</h2>
                 <h2> FILAH DA PUTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</h2>
                 <h2> FILAH DA PUTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</h2>
