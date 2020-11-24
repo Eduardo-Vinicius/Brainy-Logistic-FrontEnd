@@ -396,6 +396,7 @@ export default function Teste() {
                 <Button onClick={verIndexProdutos} variant="success" as={Col} xs={2} Style ="margin: 0px;" size="small">
                     Selecionar Produto
                 </Button>
+                
 
         </Form.Row>
         <Form.Row>
@@ -445,6 +446,9 @@ export default function Teste() {
                          value={valorTotal}
                          onChange={e => setValorTotal(parseFloat(e.target.value))} />
                     </Form.Group>
+                <Button className="btnAdicionar" variant="success" onClick={MyFunction} as={Col} xs={2} Style ="margin: 0px" size="small">
+                    Adicionar
+                </Button>
                 <Button className="btnAdicionar" variant="success" onClick={MyFunction} as={Col} xs={2} Style ="margin: 0px" size="small">
                     Adicionar
                 </Button>

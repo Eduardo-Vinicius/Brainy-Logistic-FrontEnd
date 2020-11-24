@@ -72,20 +72,20 @@ const App = () => {
   })
   
 
-  axios.get("http://localhost:5000/tbordemservico").then(res =>
-  {
-    console.log(res)
-    for (let x in res["data"]){  
-      //console.log(res["data"][x]["valor"])
-      lucro = lucro + res["data"][x]["valor"]
+  // axios.get("http://localhost:5000/tbordemservico").then(res =>
+  // {
+  //   console.log(res)
+  //   for (let x in res["data"]){  
+  //     //console.log(res["data"][x]["valor"])
+  //     lucro = lucro + res["data"][x]["valor"]
       
 
-      }
+  //     }
 
       
-  }
+  // }
 
-  );
+  // );
   console.log(lucro)
   financeiro();
 }
@@ -195,7 +195,7 @@ const App = () => {
             }
           }
         />
-      </div> */} 
+        </div> */} _______________
       
 
     </div>
