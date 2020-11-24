@@ -94,7 +94,7 @@ const App = () => {
       </div>
       <div>
       </div>
-      <div className="Grafico4">
+      {/* <div className="Grafico4">
         <h1>Grafico 3 </h1>
         <Pie
           data={chartData}
@@ -117,7 +117,7 @@ const App = () => {
             }
           }
         />
-      </div>
+      </div> */}
       
 
     </div>
