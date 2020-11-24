@@ -7,9 +7,12 @@ import { Link } from "react-router-dom";
 
 var abertos = 0;
 var fechados = 0;
+var lucro = 0;
+var despesa = 0;
 
 const App = () => {
   const [chartData, setChartData] = useState({});
+  const [financeiroData, setFinanceiroData] = useState({})
   const [employeeSalary, setEmployeeSalary] = useState();
   const [employeeAge, setEmployeeAge] = useState();
 
@@ -21,24 +24,22 @@ const App = () => {
     axios
       .get("http://localhost:5000/tbordemservico")
       .then(res => {
-        console.log(res);
         for (let x in res["data"]){  
           value = res["data"][x]["status"]
           if (value === "Aberto") {
             
             abertos = abertos + 1
-            console.log("achamos o aberto")
 
           }
           else
           {
             fechados = fechados + 1
-            console.log("Fechado")
           }
          
-          console.log(abertos)
+        
         }
-        console.log(abertos, fechados);
+   
+
         setChartData({
           labels: ["Abertos", "Fechados"],
           datasets: [
@@ -57,19 +58,89 @@ const App = () => {
     
   };
 
+
+  const lucros = () => {
+    axios.get("http://localhost:5000/venda").then(res =>
+    {
+      console.log(res)
+      for (let x in res["data"]){  
+        console.log(res["data"][x]["dsValor"])
+        lucro = lucro + res["data"][x]["dsValor"]
+
+
+    }
+  });
+  
+
+  axios.get("http://localhost:5000/tbordemservico").then(res =>
+  {
+    console.log(res)
+    for (let x in res["data"]){  
+      console.log(res["data"][x]["valor"])
+      lucro = lucro + res["data"][x]["valor"]
+
+
+      }
+      
+  }
+  );
+}
+  
+  const financeiro = () => {
+    var value = ''
+
+   
+    axios
+      .get("http://localhost:5000/compra")
+      .then(res => {
+        console.log(res)
+        for (let x in res["data"]){  
+          console.log(res["data"][x]["vlCompra"])
+          despesa = despesa + res["data"][x]["vlCompra"]
+
+       
+           
+        }
+
+
+        setFinanceiroData({
+          labels: ["Lucro", "Despesas"],
+          datasets: [
+            {
+              label: "level of thiccness",
+              data: [lucro, despesa],
+              backgroundColor: ["rgba(0, 65, 0, 0.7)", "rgba(123, 0, 0, 0.7)"],
+              borderWidth: 5
+            }
+          ]
+        });
+
+
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    
+  };
+
   useEffect(() => {
     chart();
+    lucros();
+    financeiro();
+    
     console.log(abertos, fechados);
 
   }, []);
 
   return (
+    
     <div className="App">
         
-      
+        <br></br>
+        <br></br>  
       <div className="Grafico">
       
-      <h1>Grafico 1</h1>
+      <h3> Ordem de Serviço </h3>
         <Pie
           data={chartData}
           options={{
@@ -81,12 +152,12 @@ const App = () => {
             
     </div>
         <div className="Grafico2">
-        <h1>Grafico 2 </h1>
-        <Bar
-          data={chartData}
+        <h3>Lucro</h3>
+        <Pie
+          data={financeiroData}
           options={{
             responsive: true,
-            title: { text: "Relatórios - Ordem de Serviço Abertas/Fechadas", display: true },
+            title: { text: "Relatórios - Lucro/Despesa", display: true },
             
             }
           }
@@ -117,7 +188,7 @@ const App = () => {
             }
           }
         />
-      </div> */}
+      </div> */} 
       
 
     </div>
