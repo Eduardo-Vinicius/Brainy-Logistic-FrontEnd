@@ -1,0 +1,26 @@
+/* Tabela conteúdo*/
+.table {
+  border: 3px solid #ccc;
+  text-align: center;
+}
+
+/* Tabela externo*/
+
+#table-container {
+  width: 100%;
+  margin: auto;
+}
+
+/* Linhas quando se passa o mouse */
+
+tbody tr:hover {
+  background-color: #ccc;
+}
+
+/* Botão */
+
+.btn-consultar {
+  position: absolute;
+  right: 250px;
+  top: 115px;
+}

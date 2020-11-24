@@ -1,0 +1,10 @@
+#cboCidades option {
+  width: 150px;
+
+}
+
+
+.btnAdicionar {
+  float: right;
+  display: none;
+}
