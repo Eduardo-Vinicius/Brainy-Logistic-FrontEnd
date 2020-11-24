@@ -60,6 +60,7 @@ export default function Teste() {
     
     const salvarOrdemServico= async () => {
         const pr = await api_produto.consultar()
+        
         var request = {
             valor: valorOS,
             dtOrdemServico: dtOrdemServico,
@@ -67,8 +68,8 @@ export default function Teste() {
             idCliente: parseInt(idCliente),
             status: "Aberto",
             valorManutencao: valorManutencao}
-
-        //console.log(request)
+        console.log('aaaaaaa')
+        console.log(request)
         // console.log(carrinho)
         const   resp = await
                 api_ordemservico.cadastrar(request)
@@ -124,33 +125,6 @@ export default function Teste() {
             const resp2 = await api_ordemservicoitem.cadastrar(request_item)
             //console.log(resp2)
             console.log("Ordem de Serviço Item Cadastrada")
-
-
-            // console.log(qtdProd)
-            // console.log(qtdProdutos)
-            
-            // console.log(calculo)
-            // atualizarProdutos()
-            // console.log(qtdProd)
-            
-            // console.log("antes: " + qtdProd)
-            // var c = qtdProd - qtdProdutos
-            // setCalculo(c)
-
-            
-            // console.log("depois: " + calculo)
-            
-            // console.log("depois qtd:  " + qtdProd)
-            // var r = {
-            //     marca: marca,
-            //     nome: nome,
-            //     qtd: calculo,
-            //     valorVenda: valorUnitario,
-            //     dataCompra: dataCompra
-            // }
-            // console.log(r)
-            // const resp3 = await api_produto.alterar(produtoId, r)
-            // console.log(resp3)
            
         
             }
@@ -511,7 +485,7 @@ export default function Teste() {
                         <Form.Control
                          type="text"
                          placeholder="Ex: 5,00"
-                         onChange={e => setValorManutencao(e.target.value)} />
+                         onChange={e => setValorManutencao(parseFloat(e.target.value))} />
                 </Form.Group>
 
             <Form.Group as={Col} xs={4} controlId="formgridVlUnit" >
