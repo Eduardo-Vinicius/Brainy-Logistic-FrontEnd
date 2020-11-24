@@ -44,7 +44,7 @@ const App = () => {
           labels: ["Abertos", "Fechados"],
           datasets: [
             {
-              label: "level of thiccness",
+              label: ["Abertos", "Fechados"],
               data: [abertos, fechados],
               backgroundColor: ["rgba(0, 65, 0, 0.7)", "rgba(123, 0, 0, 0.7)"],
               borderWidth: 5
@@ -64,44 +64,51 @@ const App = () => {
     {
       console.log(res)
       for (let x in res["data"]){  
-        console.log(res["data"][x]["dsValor"])
+
         lucro = lucro + res["data"][x]["dsValor"]
 
 
     }
-  });
+  })
   
 
   axios.get("http://localhost:5000/tbordemservico").then(res =>
   {
     console.log(res)
     for (let x in res["data"]){  
-      console.log(res["data"][x]["valor"])
+      //console.log(res["data"][x]["valor"])
       lucro = lucro + res["data"][x]["valor"]
-
+      
 
       }
+
       
   }
+
   );
+  console.log(lucro)
+  financeiro();
 }
   
   const financeiro = () => {
     var value = ''
 
+    console.log(lucro)
    
     axios
       .get("http://localhost:5000/compra")
       .then(res => {
         console.log(res)
         for (let x in res["data"]){  
-          console.log(res["data"][x]["vlCompra"])
+          // console.log(res["data"][x]["vlCompra"])
           despesa = despesa + res["data"][x]["vlCompra"]
 
        
            
         }
 
+        console.log(despesa)
+        console.log(lucro)
 
         setFinanceiroData({
           labels: ["Lucro", "Despesas"],
@@ -126,7 +133,7 @@ const App = () => {
   useEffect(() => {
     chart();
     lucros();
-    financeiro();
+    
     
     console.log(abertos, fechados);
 
